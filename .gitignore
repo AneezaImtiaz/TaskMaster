@@ -21,3 +21,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+gitignore
+# Ignore built JavaScript files and source maps
+**/*.js
+**/*.map
+
+# Ignore the entire dist directory (optional, if you want to ignore all build output)
+dist/
+
