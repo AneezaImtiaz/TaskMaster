@@ -3,5 +3,5 @@ export type Task = {
     title: string;
     description: string;
     dueDate: string;
-    status: 'pending' | 'in progress' | 'completed';
+    status: 'Pending' | 'In Progress' | 'Completed';
 }

@@ -37,7 +37,7 @@ export default defineComponent({
         title: '',
         description: '',
         dueDate: new Date().toISOString().split('T')[0], // Default to today's date
-        status: 'pending',
+        status: 'Pending',
       }),
     },
   },
