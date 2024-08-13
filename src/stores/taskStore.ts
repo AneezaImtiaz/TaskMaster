@@ -11,4 +11,9 @@ export const useTaskStore = defineStore('taskStore', {
             this.tasks.push(task);
         },
     },
+
+    persist: {
+        key: 'taskStore', // Key to store the state under in localStorage
+        storage: localStorage, // Storage mechanism
+    },
 });

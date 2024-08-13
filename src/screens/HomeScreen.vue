@@ -4,6 +4,9 @@
       <h1>Task List</h1>
       <button @click="showFormModal = true">+</button>
     </div>
+    <div class="list-container">
+      <TaskCard v-for="task in tasks" :key="task.id" :task="task" />
+    </div>
     <FormModal v-if="showFormModal" submitButtonLabel="Add Task" :onSubmit="handleFormSubmit" @cancel="cancelForm" />
   </div>
 </template>
@@ -12,13 +15,14 @@
 import { defineComponent, ref } from 'vue';
 import { useTaskStore } from '@/stores/taskStore';
 import { Task } from '@/types';
-import { FormModal } from '@/components';
+import { FormModal, TaskCard } from '@/components';
 import './HomeScreen.css';
 
 export default defineComponent({
   name: 'HomeScreen',
   components: {
     FormModal,
+    TaskCard,
   },
   setup() {
     const taskStore = useTaskStore();
@@ -34,6 +38,7 @@ export default defineComponent({
     };
 
     return {
+      tasks: taskStore.tasks,
       showFormModal,
       handleFormSubmit,
       cancelForm,
