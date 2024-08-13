@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import { useTaskStore } from '@/stores/taskStore';
 import { Task } from '@/types';
 import { FormModal, TaskCard } from '@/components';
@@ -27,6 +27,7 @@ export default defineComponent({
   setup() {
     const taskStore = useTaskStore();
     const showFormModal = ref(false);
+    const tasks = computed(() => taskStore.tasks);
 
     const handleFormSubmit = (task: Task) => {
       taskStore.addTask(task);
@@ -38,7 +39,7 @@ export default defineComponent({
     };
 
     return {
-      tasks: taskStore.tasks,
+      tasks: tasks,
       showFormModal,
       handleFormSubmit,
       cancelForm,
