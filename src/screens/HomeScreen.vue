@@ -39,7 +39,7 @@ export default defineComponent({
     };
 
     return {
-      tasks: tasks,
+      tasks,
       showFormModal,
       handleFormSubmit,
       cancelForm,
