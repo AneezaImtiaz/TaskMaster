@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { Task } from '../types';
+import { Task } from '@/types';
 
 export const useTaskStore = defineStore('taskStore', {
     state: () => ({
@@ -9,6 +9,13 @@ export const useTaskStore = defineStore('taskStore', {
     actions: {
         addTask(task: Task) {
             this.tasks.push(task);
+        },
+
+        editTask(task: Task) {
+            const index = this.tasks.findIndex(t => t.id === task.id);
+            if (index !== -1) {
+                this.tasks[index] = task;
+            }
         },
     },
 

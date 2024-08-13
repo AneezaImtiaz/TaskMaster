@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, PropType } from 'vue';
+import { defineComponent, reactive, toRefs, watch, PropType } from 'vue';
 import { Task } from '@/types';
 import './FormModal.css';
 
@@ -30,26 +30,31 @@ export default defineComponent({
       type: Function as PropType<(task: Task) => void>,
       required: true,
     },
+    task: {
+      type: Object as PropType<Task>,
+      default: () => ({
+        id: 0,
+        title: '',
+        description: '',
+        dueDate: new Date().toISOString().split('T')[0], // Default to today's date
+        status: 'pending',
+      }),
+    },
   },
   emits: ['cancel'],
   setup(props, { emit }) {
-    const formatDate = (date: Date): string => {
-      const year = date.getFullYear();
-      const month = String(date.getMonth() + 1).padStart(2, '0');
-      const day = String(date.getDate()).padStart(2, '0');
-      return `${year}-${month}-${day}`;
-    };
+    const task = reactive<Task>({ ...props.task });
 
-    const task = reactive<Task>({
-      id: 0,
-      title: '',
-      description: '',
-      dueDate: formatDate(new Date()),
-      status: 'pending',
-    });
+    watch(
+      () => props.task,
+      (newTask) => {
+        Object.assign(task, newTask);
+      },
+      { deep: true, immediate: true }
+    );
 
     const submitForm = () => {
-      props.onSubmit({ ...task, id: Date.now() });
+      props.onSubmit({ ...task, id: task?.id || Date.now() });
     };
 
     const cancel = () => {
