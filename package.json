@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
+    "cleanNpm": "rm -rf package-lock.json node_modules/ && npm cache clean --force && npm i --legacy-peer-deps",
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.35"
+    "pinia": "^2.2.1",
+    "vue": "^3.4.35",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^22.2.0",
