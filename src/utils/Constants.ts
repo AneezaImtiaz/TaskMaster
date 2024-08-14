@@ -4,7 +4,7 @@ export const CLOSE = "Close";
 
 export const DELETE_DIALOG = {
   title: "Delete Task",
-  description: "Are you sure you want to delete the task.",
+  description: "Are you sure you want to delete the task?",
 } as const;
 
 export const EMPTY_SEARCH_DIALOG = {

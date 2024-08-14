@@ -1,5 +1,7 @@
 import { MessageDialog } from "@/components";
 import { Meta, StoryFn } from "@storybook/vue3";
+import { within, userEvent } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 export default {
   title: "Components/Dialogs/MessageDialog",
@@ -63,4 +65,26 @@ WithoutCloseButton.args = {
   description: "This dialog does not have a close button",
   button: "Confirm",
   closeButton: "",
+};
+
+export const WithInteraction = Template.bind({});
+WithInteraction.args = {
+  title: "Interactive Dialog",
+  description: "This dialog includes interaction tests",
+  button: "Confirm",
+  closeButton: "Cancel",
+};
+
+WithInteraction.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  // Simulate clicking the confirm button
+  const confirmButton = await canvas.getByRole("button", { name: "Confirm" });
+  await userEvent.click(confirmButton);
+  await expect(confirmButton).toBeCalled;
+
+  // Simulate clicking the close button
+  const closeButton = await canvas.getByRole("button", { name: "Cancel" });
+  await userEvent.click(closeButton);
+  await expect(closeButton).toBeCalled;
 };

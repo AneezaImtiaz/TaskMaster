@@ -2,6 +2,8 @@ import { TaskCard, MessageDialog, FormModal } from "@/components";
 import { Meta, StoryFn } from "@storybook/vue3";
 import { Task } from "@/types";
 import { ref, onMounted, nextTick } from "vue";
+import { within, userEvent } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 export default {
   title: "Components/Cards/TaskCard",
@@ -145,4 +147,37 @@ const WithDeleteDialogTemplate: StoryFn<typeof TaskCard> = (args: any) => ({
 export const WithDeleteDialog = WithDeleteDialogTemplate.bind({});
 WithDeleteDialog.args = {
   ...Default.args,
+};
+
+export const WithInteraction = Template.bind({});
+WithInteraction.args = {
+  task: {
+    id: 1,
+    title: "Sample Task",
+    description: "This is a sample task description.",
+    status: "Pending",
+    dueDate: "2023-12-31",
+  },
+};
+
+WithInteraction.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  // Simulate clicking the card container to open the edit modal
+  const cardContainer = await canvas.getByText("Sample Task");
+  await userEvent.click(cardContainer);
+
+  // Check if the EditModal opens
+  const button = await canvas.findByText("Confirm");
+  await expect(button).toBeInTheDocument();
+
+
+  // Simulate clicking the delete icon to open the delete dialog
+  const deleteIcon = await canvas.getByAltText("Delete");
+  await userEvent.click(deleteIcon);
+
+  // Check if the MessageDialog opens
+  const dialogTitle = await canvas.findByText("Delete Task");
+  await expect(dialogTitle).toBeInTheDocument();
+
 };

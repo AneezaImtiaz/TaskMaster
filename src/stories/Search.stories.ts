@@ -1,6 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { Search } from "@/components";
 import { Meta, StoryFn } from "@storybook/vue3";
+import { within, userEvent } from "@storybook/testing-library";
+import { expect } from "@storybook/jest";
 
 export default {
   title: "Components/Inputs/Search",
@@ -33,7 +35,7 @@ const Template: StoryFn<typeof Search> = (args: any) => ({
     const handleButtonClick = action("button clicked");
     return { args, handleButtonClick };
   },
-  template: '<Search v-bind="args" @buttonClick="handleButtonClick" />',
+  template: '<Search v-bind="args" @onButtonClick="handleButtonClick" />',
 });
 
 export const Default = Template.bind({});
@@ -44,4 +46,23 @@ Default.args = {
 export const WithCustomPlaceholder = Template.bind({});
 WithCustomPlaceholder.args = {
   placeholder: "Enter your search term...",
+};
+
+export const WithInteraction = Template.bind({});
+WithInteraction.args = {
+  placeholder: "Enter your search term...",
+};
+
+WithInteraction.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  // Simulate entering text into the search input
+  const searchInput = await canvas.getByPlaceholderText("Enter your search term...");
+  await userEvent.type(searchInput, "Test search");
+  await expect(searchInput).toHaveValue("Test search");
+
+  // Simulate clicking the search button
+  const searchButton = await canvas.getByRole("button", { name: "Search" });
+  await userEvent.click(searchButton);
+  await expect(searchButton).toBeCalled;
 };
