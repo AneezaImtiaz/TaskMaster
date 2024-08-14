@@ -30,3 +30,5 @@ gitignore
 # Ignore the entire dist directory (optional, if you want to ignore all build output)
 dist/
 
+
+*storybook.log
