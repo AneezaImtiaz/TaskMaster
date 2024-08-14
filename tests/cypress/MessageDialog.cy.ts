@@ -1,5 +1,5 @@
 import { mount } from '@cypress/vue';
-import {MessageDialog} from '../../src/components/dialogs';
+import { MessageDialog } from '../../src/components';
 
 describe('MessageDialog Component', () => {
   it('renders correctly and handles button clicks', () => {
