@@ -1,7 +1,7 @@
 <template>
-  <div class="card-container">
-    <h2 class="task-title" @click="showEditModal = true">{{ task?.title }}</h2>
-    <p class="task-description" @click="showEditModal = true">{{ task?.description }}</p>
+  <div class="card-container" @click="showEditModal = true">
+    <h2 class="task-title">{{ task?.title }}</h2>
+    <p class="task-description">{{ task?.description }}</p>
     <div class="card-footer">
       <div>
         <p class="task-due-date">Due: {{ task?.dueDate }}</p>

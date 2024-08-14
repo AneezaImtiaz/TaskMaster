@@ -20,7 +20,7 @@
     <div class="list-container">
       <TaskCard v-for="task in filteredTasks" :key="task.id" :task="task" />
     </div>
-    <FormModal v-if="showFormModal" submitButtonLabel="Add Task" :onSubmit="handleFormSubmit" @cancel="cancelForm" />
+    <FormModal v-if="showFormModal" submitButtonLabel="Create" :onSubmit="handleFormSubmit" @cancel="cancelForm" />
   </div>
 </template>
 
