@@ -1,1 +1,1 @@
-export { default as deleteIcon } from './delete.png';
+export { default as deleteIcon } from "./delete.png";

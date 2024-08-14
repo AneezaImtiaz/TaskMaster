@@ -6,12 +6,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import './style.css';
-import { Header } from '@/components';
+import { defineComponent } from "vue";
+import "./style.css";
+import { Header } from "@/components";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: { Header },
 });
 </script>

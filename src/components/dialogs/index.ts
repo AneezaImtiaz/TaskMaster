@@ -1,1 +1,1 @@
-export { default as MessageDialog } from './MessageDialog.vue';
+export { default as MessageDialog } from "./MessageDialog.vue";

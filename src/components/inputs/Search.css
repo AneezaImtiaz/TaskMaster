@@ -1,21 +1,21 @@
 .search-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .search-content {
-    width: 300px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .search-input {
-    padding: 0.5rem;
-    margin: 1rem 0;
-    width: 70%;
-    font-size: 0.9em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
+  display: flex;
+  justify-content: center;
+}
+
+.search-content {
+  width: 300px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  padding: 0.5rem;
+  margin: 1rem 0;
+  width: 70%;
+  font-size: 0.9em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}

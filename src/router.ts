@@ -1,18 +1,18 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeScreen from '@/screens/HomeScreen.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import HomeScreen from "@/screens/HomeScreen.vue";
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: HomeScreen,
-    },
-    // Add more routes here
+  {
+    path: "/",
+    name: "Home",
+    component: HomeScreen,
+  },
+  // Add more routes here
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
+  history: createWebHistory(),
+  routes,
 });
 
 export default router;

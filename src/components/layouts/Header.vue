@@ -13,12 +13,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import './Header.css';
-import { APP_TITLE, ROUTES } from '@/utils/Constants';
+import { defineComponent } from "vue";
+import "./Header.css";
+import { APP_TITLE, ROUTES } from "@/utils/Constants";
 
 export default defineComponent({
-  name: 'Header',
+  name: "Header",
   data() {
     return {
       APP_TITLE,

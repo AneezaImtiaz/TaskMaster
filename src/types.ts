@@ -1,7 +1,7 @@
 export type Task = {
-    id: number;
-    title: string;
-    description: string;
-    dueDate: string;
-    status: 'Pending' | 'In Progress' | 'Completed';
-}
+  id: number;
+  title: string;
+  description: string;
+  dueDate: string;
+  status: "Pending" | "In Progress" | "Completed";
+};

@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.alert-button-container{
+.alert-button-container {
   width: 90%;
   display: flex;
   margin-top: 20px;
@@ -19,7 +19,7 @@
   height: 40px;
 }
 
-.alert-button-container button{
+.alert-button-container button {
   height: 100%;
   width: 45%;
   font-size: 1em;

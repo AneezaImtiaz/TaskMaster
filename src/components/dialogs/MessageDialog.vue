@@ -4,42 +4,44 @@
     <p>{{ description }}</p>
     <div class="alert-button-container">
       <button @click="onButtonClick">{{ button }}</button>
-      <button v-if="closeButton" @click="onCloseButtonClick">{{ closeButton }}</button>
+      <button v-if="closeButton" @click="onCloseButtonClick">
+        {{ closeButton }}
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import './MessageDialog.css';
+import { defineComponent, PropType } from "vue";
+import "./MessageDialog.css";
 
 export default defineComponent({
-  name: 'MessageDialog',
+  name: "MessageDialog",
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     button: {
       type: String,
-      required: true
+      required: true,
     },
     closeButton: {
       type: String,
-      default: ''
+      default: "",
     },
     onButtonClick: {
       type: Function as PropType<() => void>,
-      required: true
+      required: true,
     },
     onCloseButtonClick: {
       type: Function as PropType<() => void>,
-      default: () => { }
-    }
+      default: () => {},
+    },
   },
 });
 </script>

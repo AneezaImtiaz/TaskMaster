@@ -18,26 +18,34 @@
       </select>
     </div>
 
-    <Search :onButtonClick="handleSearch" :placeholder="`${SEARCH} task here...`" />
+    <Search
+      :onButtonClick="handleSearch"
+      :placeholder="`${SEARCH} task here...`"
+    />
 
     <div class="list-container">
       <TaskCard v-for="task in filteredTasks" :key="task.id" :task="task" />
     </div>
 
-    <FormModal v-if="showFormModal" submitButtonLabel="Create" :onSubmit="handleFormSubmit" @cancel="cancelForm" />
+    <FormModal
+      v-if="showFormModal"
+      submitButtonLabel="Create"
+      :onSubmit="handleFormSubmit"
+      @cancel="cancelForm"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { useTaskStore } from '@/stores/taskStore';
-import { Task } from '@/types';
-import { SEARCH } from '@/utils/Constants';
-import { FormModal, TaskCard, Search } from '@/components';
-import './HomeScreen.css';
+import { defineComponent, ref, computed } from "vue";
+import { useTaskStore } from "@/stores/taskStore";
+import { Task } from "@/types";
+import { SEARCH } from "@/utils/Constants";
+import { FormModal, TaskCard, Search } from "@/components";
+import "./HomeScreen.css";
 
 export default defineComponent({
-  name: 'HomeScreen',
+  name: "HomeScreen",
   components: {
     FormModal,
     TaskCard,
@@ -46,23 +54,33 @@ export default defineComponent({
   setup() {
     const taskStore = useTaskStore();
     const showFormModal = ref(false);
-    const selectedStatus = ref('');
-    const sortOrder = ref('dueDateDesc');
-    const searchQuery = ref('');
+    const selectedStatus = ref("");
+    const sortOrder = ref("dueDateDesc");
+    const searchQuery = ref("");
     const tasks = computed(() => taskStore.tasks);
 
     const filteredTasks = computed(() => {
       let filtered = tasks.value;
       if (selectedStatus.value) {
-        filtered = filtered.filter(task => task.status === selectedStatus.value);
+        filtered = filtered.filter(
+          (task) => task.status === selectedStatus.value,
+        );
       }
-      if (sortOrder.value === 'dueDateAsc') {
-        filtered = filtered.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
-      } else if (sortOrder.value === 'dueDateDesc') {
-        filtered = filtered.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime());
+      if (sortOrder.value === "dueDateAsc") {
+        filtered = filtered.sort(
+          (a, b) =>
+            new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime(),
+        );
+      } else if (sortOrder.value === "dueDateDesc") {
+        filtered = filtered.sort(
+          (a, b) =>
+            new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime(),
+        );
       }
       if (searchQuery.value) {
-        filtered = filtered.filter(task => task.title.toLowerCase().includes(searchQuery.value.toLowerCase()));
+        filtered = filtered.filter((task) =>
+          task.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
+        );
       }
       return filtered;
     });

@@ -24,8 +24,8 @@ yarn-error.log*
 
 gitignore
 # Ignore built JavaScript files and source maps
-**/*.js
-**/*.map
+src/**/*.js
+src/**/*.map
 
 # Ignore the entire dist directory (optional, if you want to ignore all build output)
 dist/

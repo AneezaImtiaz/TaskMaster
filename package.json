@@ -9,7 +9,11 @@
     "cleanNpm": "rm -rf package-lock.json node_modules/ && npm cache clean --force && npm i --legacy-peer-deps",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "clear-storybook-cache": "rm -rf node_modules/.cache/storybook",
+    "build-storybook": "npm run clear-storybook-cache && storybook build",
+    "lint": "eslint \"src/**/*.{js,ts,vue}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{js,ts,vue}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,vue,css,scss,md}\""
   },
   "dependencies": {
     "pinia": "^2.2.1",
@@ -19,6 +23,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
+    "@eslint/js": "^9.9.0",
     "@storybook/addon-docs": "^8.2.9",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
@@ -29,9 +34,18 @@
     "@storybook/vue3": "^8.2.9",
     "@storybook/vue3-vite": "^8.2.9",
     "@types/node": "^22.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
     "@vitejs/plugin-vue": "^5.1.2",
+    "eslint": "^9.9.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.27.0",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
     "storybook": "^8.2.9",
     "typescript": "^5.5.3",
+    "typescript-eslint": "^8.1.0",
     "vite": "^5.4.0",
     "vue-tsc": "^2.0.29"
   }
