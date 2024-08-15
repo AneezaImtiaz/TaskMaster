@@ -13,7 +13,8 @@
     "build-storybook": "npm run clear-storybook-cache && storybook build",
     "lint": "eslint \"src/**/*.{js,ts,vue}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,ts,vue}\"",
-    "format": "prettier --write \"src/**/*.{js,ts,vue,css,scss,md}\""
+    "format": "prettier --write \"src/**/*.{js,ts,vue,css,scss,md}\"",
+    "test": "npx cypress open-ct"
   },
   "dependencies": {
     "pinia": "^2.2.1",
